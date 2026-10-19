@@ -4,21 +4,16 @@
 Find compromises, risks and unused elements, each with evidence, severity and a proposed action.
 
 ## Determine
-- Launch `audit-files`, `audit-database` and `audit-components` in parallel. Brief each with: working folder, local URL, how to reach files, database and command line in the environment, live URL, archive path and reader, baseline facts already known (stack, inventory, errors).
+- Launch the three audit agents in parallel with this brief: working folder and working data folder; local URL; how to reach files, database and command line in the environment; table prefix; installed components with versions; archive path and reader; live URL (reference only, agents do not request it); baseline facts (site profile, stack, inventory, errors).
 - Merge and deduplicate their findings.
 - Correlate timelines across sources: account creation times, clusters of file modifications, bursts of database records, log entries. Coinciding timestamps are the strongest evidence.
-- Separate what the archive cannot show (core files, root files, server configuration, host scheduler): these become production checks.
+- Separate what the archive cannot show (core and root files, server configuration, host scheduler): these become production checks.
 
 ## Decide
-- Severity:
-  - CRITICAL: active compromise, backdoor, malicious payload;
-  - HIGH: exploitable vulnerability, illegitimate administrator, dormant malicious code;
-  - MEDIUM: nulled or unlicensed code, weak configuration, excess privileges;
-  - LOW: hygiene;
-  - INFO: context.
+- Severity: CRITICAL active compromise, backdoor, malicious payload; HIGH exploitable vulnerability, illegitimate administrator, dormant malicious code; MEDIUM nulled or unlicensed code, weak configuration, excess privileges; LOW hygiene; INFO context.
 - Keep facts and hypotheses apart in every finding.
-- When a compromise is confirmed, make the compromise stop: show the critical findings with evidence, then continue.
-- An account created by an exploit may later have been used by legitimate staff: state it as a question for the owner, never as an assumption.
+- Compromise confirmed: stop 2 (notice with the critical findings, evidence and planned remediation), then continue.
+- An account created by an exploit may later have been used by legitimate staff: it goes to the owner questions for stop 3, never assumed either way.
 
 ## Risks to check
 Recurring compromise signatures:

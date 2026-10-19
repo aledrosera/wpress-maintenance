@@ -95,18 +95,24 @@ def read_package(archive):
         raise FormatError(f'package.json is not valid JSON: {exc}')
 
 
-def _refuse_if_encrypted(archive):
+def _flag(value):
+    return value is True or value == 1 or str(value).strip().lower() in ('1', 'true', 'yes', 'on')
+
+
+def _refuse_if_unreadable(archive):
     try:
         pkg = read_package(archive)
     except KeyError:
         return
-    if pkg.get('Encrypted') in (True, 1, '1', 'true', 'yes'):
+    if _flag(pkg.get('Encrypted')):
         raise EncryptedError('archive is encrypted: file contents cannot be read without the All-in-One WP Migration password')
+    if _flag(pkg.get('Compressed')) or _flag(pkg.get('Compression')):
+        raise FormatError('archive is compressed: entries are not stored as plain files, this reader cannot decode them')
 
 
 def stream_entry(archive, path, out):
     if path != 'package.json':
-        _refuse_if_encrypted(archive)
+        _refuse_if_unreadable(archive)
     return _copy(archive, _find(archive, path), out)
 
 
@@ -121,7 +127,7 @@ def _safe_target(dest, path):
 
 
 def extract(archive, dest, patterns):
-    _refuse_if_encrypted(archive)
+    _refuse_if_unreadable(archive)
     matched = [e for e in iter_entries(archive) if any(fnmatch.fnmatch(e.path, p) for p in patterns)]
     targets = [(e, _safe_target(dest, e.path)) for e in matched]  # validate every path before writing anything
     for e, target in targets:
@@ -140,7 +146,9 @@ def _info(archive):
         ('table_prefix', db.get('Prefix')), ('charset', db.get('Charset')),
         ('template', pkg.get('Template')), ('stylesheet', pkg.get('Stylesheet')),
         ('aiowm_version', (pkg.get('Plugin') or {}).get('Version')),
-        ('encrypted', bool(pkg.get('Encrypted'))), ('compression', pkg.get('Compression')),
+        ('encrypted', _flag(pkg.get('Encrypted'))),
+        ('compressed', _flag(pkg.get('Compressed')) or _flag(pkg.get('Compression'))),
+        ('network', _flag(pkg.get('Multisite')) or _flag(pkg.get('Network')) or 'unknown (not in metadata)'),
         ('active_plugins', ', '.join(pkg.get('Plugins') or [])),
     ]
     entries = list(iter_entries(archive))

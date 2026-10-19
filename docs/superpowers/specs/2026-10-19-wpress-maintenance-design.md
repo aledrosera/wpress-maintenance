@@ -16,7 +16,7 @@ Il plugin è un **playbook adattivo**, non un'automazione a script. Insegna a Cl
 ## 2. Scenario d'uso
 - **Chi lo usa:** chi gestisce o manutiene siti WordPress (agenzia, freelance, sistemista).
 - **Cosa fornisce:** una cartella di lavoro con il `.wpress` del sito (oppure l'URL da cui scaricarlo) e lo zip di All-in-One WP Migration Unlimited Extension.
-- **Come si avvia:** con il comando `/wpress`. Il flusso procede in autonomia fino al risultato, fermandosi solo nei casi previsti al §7.
+- **Come si avvia:** con `/wpress-maintenance:wpress`. Il flusso procede in autonomia fino al risultato, fermandosi solo nei casi previsti al §7.
 
 ## 3. Fuori ambito
 - Il deploy in produzione: il plugin consegna la copia pulita, il backup e la checklist delle azioni sul server.
@@ -188,10 +188,9 @@ Il repository è insieme marketplace e plugin.
 .claude-plugin/marketplace.json      marketplace (un plugin)
 plugins/wpress-maintenance/
   .claude-plugin/plugin.json         manifest
-  commands/wpress.md                 /wpress [fase|riprendi]: avvio e ripresa
-  skills/wpress-maintenance/
-    SKILL.md                         principi (§5), mappa delle fasi, stop (§7), stato e ripresa
-    references/                      una scheda per fase (§6): obiettivo, criteri, rischi (§8), uscita
+  skills/wpress/
+    SKILL.md                         skill invocabile (/wpress-maintenance:wpress [fase|resume]): principi, fasi, stop, ripresa
+    references/                      una scheda per fase: obiettivo, criteri, rischi, uscita
   agents/                            audit-files, audit-database, audit-components (§6.4)
   scripts/wpress.py                  lettore del formato .wpress (§10)
 README.md  LICENSE  CHANGELOG.md
@@ -210,8 +209,8 @@ docs/superpowers/specs/              questo documento
 
 ## 11. Stato e ripresa
 - Lo stato vive nel report in costruzione nella cartella di lavoro: fasi completate, finding e numeri. Non servono altri file di stato.
-- `/wpress riprendi` legge il report e l'ambiente esistente e riparte dalla prima fase incompleta.
-- `/wpress <fase>` rilancia una fase singola.
+- `/wpress-maintenance:wpress resume` legge il report e l'ambiente esistente e riparte dalla prima fase incompleta.
+- `/wpress-maintenance:wpress <fase>` rilancia una fase singola.
 
 ## 12. Sicurezza e privacy
 - Nel repository pubblico non entrano dati di clienti: nomi, URL, credenziali, report, archivi.

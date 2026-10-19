@@ -119,6 +119,18 @@ class ReaderTests(unittest.TestCase):
         with self.assertRaises(wpress.EncryptedError):
             wpress.extract(p, os.path.join(self.d, 'o'), ['*'])
 
+    def test_compressed_archive_refuses_content(self):
+        p = self._archive('c.wpress', package={'SiteURL': 'x', 'Compressed': 'true'})
+        with self.assertRaises(wpress.FormatError):
+            wpress.stream_entry(p, 'database.sql', io.BytesIO())
+        self.assertEqual(wpress.read_package(p)['SiteURL'], 'x')  # metadata stay readable
+
+    def test_false_string_flag_is_not_encrypted(self):
+        p = self._archive('f.wpress', package={'SiteURL': 'x', 'Encrypted': 'false'})
+        self.assertEqual(wpress.stream_entry(p, 'database.sql', io.BytesIO()), 26)
+        r = subprocess.run([sys.executable, '-I', SCRIPT, 'info', p], capture_output=True, text=True)
+        self.assertIn('encrypted: False', r.stdout)
+
     def test_archive_unchanged(self):
         p = self._archive()
         before = os.stat(p)
