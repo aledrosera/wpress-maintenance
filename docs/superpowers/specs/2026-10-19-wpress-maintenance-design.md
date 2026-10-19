@@ -25,7 +25,7 @@ Il plugin è un **playbook adattivo**, non un'automazione a script. Insegna a Cl
 
 ## 4. Input e preflight
 1. **Backup.** Si cerca il `.wpress` nella cartella di lavoro. Se manca, si chiede all'utente un URL raggiungibile e lo si scarica in autonomia nella cartella di lavoro. Il download deve poter riprendere se si interrompe, e alla fine si verifica che il file sia un `.wpress` valido. Se ci sono più `.wpress`, si chiede quale usare.
-2. **Unlimited Extension.** Si cerca lo zip dell'add-on nella cartella di lavoro. Se manca, lo si scarica dall'URL predefinito del plugin, definito in un solo punto e sovrascrivibile con la variabile d'ambiente `WPRESS_AIOWM_UNLIMITED_URL`. Se il download non riesce, si chiede all'utente di fornire lo zip o di indicare dove si trova.
+2. **Unlimited Extension.** Si cerca lo zip dell'add-on nella cartella di lavoro. Se manca, lo si scarica da `https://nextcloud.joinindots.com/index.php/s/PJxrSyW2gSwqDxZ/download/all-in-one-wp-migration-unlimited-extension.zip`. Se il download non riesce, si chiede all'utente di fornire lo zip o di indicare dove si trova.
 3. **Lettura dei metadati in streaming.** Da `package.json` dentro l'archivio si ricavano:
    - URL del sito;
    - versioni di WordPress, PHP e database;
