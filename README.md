@@ -17,12 +17,18 @@ It is an adaptive playbook, not a fixed script: every phase defines an objective
 Paste this prompt and let Claude do it:
 
 ```
-Install the Claude Code plugin wpress-maintenance for me:
-1. Check that the claude command is available (command -v claude). If it is not, stop and tell me to install the Claude Code CLI or to add the plugin from the Plugins menu.
-2. Run: claude plugin marketplace add aledrosera/wpress-maintenance
-3. Run: claude plugin install wpress-maintenance@wpress-maintenance --scope user
-4. Run: claude plugin details wpress-maintenance and show me the result.
-Then tell me to run /reload-plugins or to open a new session.
+Install the Claude Code plugin wpress-maintenance for me.
+If the claude command is available (command -v claude):
+  1. Run: claude plugin marketplace add aledrosera/wpress-maintenance
+  2. Run: claude plugin install wpress-maintenance@wpress-maintenance --scope user
+  3. Run: claude plugin details wpress-maintenance and show me the result.
+If it is not available (for example in Claude Desktop), edit ~/.claude/settings.json yourself:
+  merge, without removing or changing anything else in the file,
+  "extraKnownMarketplaces": { "wpress-maintenance": { "source": { "source": "github", "repo": "aledrosera/wpress-maintenance" } } }
+  and
+  "enabledPlugins": { "wpress-maintenance@wpress-maintenance": true }
+  then check that the file is still valid JSON.
+Finally tell me to run /reload-plugins or to open a new session (in Claude Desktop: restart the app); the plugin is downloaded and installed automatically.
 ```
 
 ### Manually
