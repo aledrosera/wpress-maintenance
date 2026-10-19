@@ -12,14 +12,45 @@ It is an adaptive playbook, not a fixed script: every phase defines an objective
 - The All-in-One WP Migration Unlimited Extension zip (placed in the working folder, or downloaded by the flow)
 
 ## Install
+
+### With one prompt (Claude Code or Claude Desktop "Code", local session)
+Paste this prompt and let Claude do it:
+
+```
+Install the Claude Code plugin wpress-maintenance for me:
+1. Check that the claude command is available (command -v claude). If it is not, stop and tell me to install the Claude Code CLI or to add the plugin from the Plugins menu.
+2. Run: claude plugin marketplace add aledrosera/wpress-maintenance
+3. Run: claude plugin install wpress-maintenance@wpress-maintenance --scope user
+4. Run: claude plugin details wpress-maintenance and show me the result.
+Then tell me to run /reload-plugins or to open a new session.
+```
+
+### Manually
+From a terminal:
+```
+claude plugin marketplace add aledrosera/wpress-maintenance
+claude plugin install wpress-maintenance@wpress-maintenance --scope user
+```
+or, on Claude Code 2.1.292 or later, in one step:
+```
+claude plugin install wpress-maintenance --marketplace aledrosera/wpress-maintenance
+```
+or inside a Claude Code terminal session:
 ```
 /plugin marketplace add aledrosera/wpress-maintenance
 /plugin install wpress-maintenance@wpress-maintenance
 ```
+Then run `/reload-plugins` or open a new session.
+
+### Claude Desktop ("Code" tab)
+- The terminal, the desktop app's local sessions and the VS Code extension read the same settings: once installed at user scope (with the prompt or the commands above), the plugin is available in Desktop too. You can manage it from **+ → Plugins → Manage plugins**; once the marketplace is added, it is also listed under **+ → Plugins → Add plugin**.
+- Use a **local** session: plugins are not available in cloud sessions or in WSL sessions, and the flow needs the local Docker.
+- Docker and Python 3 must be reachable from your shell profile; restart the app after changing the PATH.
+- If the Bash sandbox is enabled, Docker commands must run outside it (`excludedCommands` in the sandbox settings, e.g. for `docker compose` and `docker exec`).
 
 ## Usage
 1. Create a working folder and put the site's `.wpress` in it (optionally also the Unlimited Extension zip). If there is no `.wpress`, the flow asks for a URL and downloads it.
-2. Open Claude Code in that folder and run `/wpress`.
+2. Open Claude Code (or a local session of Claude Desktop "Code") in that folder and run `/wpress` (listed as `/wpress-maintenance:wpress` in the slash menu).
 3. `/wpress resume` continues an interrupted run; `/wpress <phase>` reruns a single phase.
 
 The flow runs autonomously. It stops only for missing inputs, for a short summary when a compromise is found, before exporting the final backup, and for anything that needs licenses, purchases, credentials or writes outside the local environment.

@@ -48,6 +48,8 @@ The flow runs autonomously. It pauses only in these four cases:
 3. Before exporting the final backup: ask for confirmation.
 4. An action needs a license, a purchase, credentials, or a write outside the local environment.
 
+Questions to the user always come from the main session (with the interactive question tool when the client offers it, otherwise in plain text); agents never ask, they return findings.
+
 ## Audit delegation
 In the `audit` phase launch the agents `audit-files`, `audit-database` and `audit-components` in parallel. Give each one: the working folder, the local URL, how to reach files, database and wp-cli in the environment, the live site URL, and what the baseline already established. They are read-only and return findings with severity, location, evidence and proposed action.
 
@@ -55,7 +57,7 @@ In the `audit` phase launch the agents `audit-files`, `audit-database` and `audi
 The report being written in the working folder is the state: each completed phase appends its section with findings and numbers. `/wpress resume` reads the report and the running environment and continues from the first phase without a section. `/wpress <id>` runs one phase.
 
 ## Archive reader
-`python3 <this skill's base directory>/../../scripts/wpress.py` — read-only, Python standard library only.
+`python3 "${CLAUDE_PLUGIN_ROOT}/scripts/wpress.py"` — read-only, Python standard library only.
 
 | subcommand | arguments | output |
 |---|---|---|

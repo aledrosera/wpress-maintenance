@@ -217,7 +217,14 @@ docs/superpowers/specs/              questo documento
   - lettura in streaming di un archivio reale di grandi dimensioni, verificando la sola lettura (dimensione e data invariate).
 - **Prova del flusso:** installazione dal marketplace e `/wpress` su una cartella di prova con un `.wpress` piccolo generato apposta, fino al report e al backup finale. Esito atteso: fasi completate, nessun temporaneo residuo, originale intatto.
 
-## 14. Decisioni
+## 14. Compatibilità e installazione
+- Funziona in Claude Code da terminale e in Claude Desktop, modalità "Code", nelle sessioni locali. Le sessioni cloud e WSL non caricano plugin e non hanno il Docker locale.
+- Il percorso del lettore si scrive come `${CLAUDE_PLUGIN_ROOT}/scripts/wpress.py`, che viene sostituito nel testo della skill.
+- Le domande all'utente partono solo dalla sessione principale.
+- Il preflight verifica che Docker sia raggiungibile dalla shell della sessione, perché un sandbox dei comandi può bloccarlo.
+- Il README offre l'installazione con un prompt da incollare: Claude esegue i comandi `claude plugin`. Offre anche l'installazione manuale e le note per Claude Desktop.
+
+## 15. Decisioni
 - **Playbook adattivo invece di script.** La varietà dei siti WordPress rende fragili gli automatismi; gli script restano solo dove il formato è fisso.
 - **Niente comandi d'esempio né prodotti consigliati nel playbook**, per non orientare le scelte.
 - **Autonomia completa**, con gli stop del §7.

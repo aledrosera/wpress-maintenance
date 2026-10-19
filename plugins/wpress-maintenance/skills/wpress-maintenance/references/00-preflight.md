@@ -14,11 +14,13 @@ Complete, valid inputs and a machine able to run the whole flow.
     `https://nextcloud.joinindots.com/index.php/s/PJxrSyW2gSwqDxZ/download/all-in-one-wp-migration-unlimited-extension.zip`
     and check that it is a zip containing that plugin folder.
   - Download failed or wrong content: ask the user for the zip or for its location.
-- Machine: container runtime installed and running; free space where the container runtime stores its volumes ≥ archive content size + database size + margin for media processing; a free local port.
+- Machine: container runtime installed, running and reachable from the session's shell (a command sandbox can block it); Python 3 on the shell path; free space where the container runtime stores its volumes ≥ archive content size + database size + margin for media processing; a free local port.
 - Live site: whether the site URL from the metadata answers.
 
 ## Decide
 - A missing requirement stops the flow with a precise message: what is missing and how to provide it.
+- Container commands blocked by a command sandbox: stop and tell the user which container commands must be allowed to run outside the sandbox.
+- A cloud or remote session without a local container runtime cannot run the flow: say so and stop.
 - More archives than one: the user chooses; never pick one yourself.
 - Live site unreachable: continue, and record that every comparison will use the local baseline only.
 - Inputs downloaded by the flow are temporary unless the user wants to keep them; inputs provided by the user stay where they are.
