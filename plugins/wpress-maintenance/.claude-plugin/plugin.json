@@ -1,6 +1,6 @@
 {
   "name": "wpress-maintenance",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Adaptive playbook to restore a WordPress .wpress backup locally, remediate compromises, clean, optimize, verify against the live site and deliver a report and an optimized backup.",
   "author": {
     "name": "Alessandro Drosera",

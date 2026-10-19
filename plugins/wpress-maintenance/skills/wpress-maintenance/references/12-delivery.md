@@ -4,11 +4,12 @@
 Deliverables in place, local environment usable, nothing temporary left behind.
 
 ## Determine
-- Report completeness, in this order: environment; security findings; remediation; plugins and themes; database; content; media; performance; verification; production actions; pending items.
+- Report completeness, in this order: environment; security findings; remediation; plugins and themes; database; content; media; SEO; accessibility; performance; verification; production actions; pending items.
 - Production checklist, limited to what the clean copy does not carry:
   - a clean deployment (empty document root, fresh core, new configuration secrets, then import), because the import does not delete files already on the server;
   - host-level credentials and host scheduler;
-  - hosting panel settings (cache lifetime, PHP version);
+  - hosting panel settings (cache lifetime, PHP version), and, only when detected: a cache key that depends on request headers (verify with a cache-busting parameter), panel toggles that rewrite the cache key, serving static files directly from the proxy while modern image formats are served by rewrite, the order in which cache layers must be cleared;
+  - a new sitemap URL to submit to search engines, when it changed;
   - settings stored in files the export does not carry, to re-activate;
   - credentials revoked locally that integrations need again;
   - personal accounts for staff who used removed accounts;

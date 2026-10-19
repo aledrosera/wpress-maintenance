@@ -13,6 +13,12 @@ Remove the plugins, themes, content, data and files the site does not need.
 - Keep what has evidence of use on public pages and what the site needs to operate (security, SEO, redirects, forms, the user's backup tool).
 - Remove what is unused, nulled, vulnerable without a fix, or an admin-only convenience the user did not ask to keep.
 - A component in use that must go: rebuild what it renders with legitimate elements already available, matching measurements taken on the live page (sizes, typography per breakpoint, spacing, behavior), then compare with the live page.
+- Several editors or plugins overlapping on the same job: propose consolidating on one, then rebuild the affected parts identically with it, page by page.
+- Each part is changed with the tools of the editor that built it; a page made with a builder is never saved from a different editor.
+- Rebuilding in a duplicate draft is fine when the result finally keeps the original slug, URL and SEO data.
+- A public URL that disappears or moves gets a redirect (or a "gone" status when nothing replaces it).
+- Code outside the editor only where the editor cannot do it and a measurement shows the gain; it excludes the builder's editor and preview and never returns an empty page.
+- Themes that generate CSS and JavaScript from their options: save the options again so the static files are written.
 - Before deleting content, map its dependencies; keep unpublished containers that define URL hierarchies.
 - Keep a few revisions per item and set a limit that travels with the site.
 - An untrusted component (nulled, malicious) is removed without running its uninstall routine; its data is cleaned manually.
@@ -23,6 +29,8 @@ Remove the plugins, themes, content, data and files the site does not need.
 - Free and premium packages of the same family provide different elements.
 - Option and table names of removed components can share prefixes with active ones: review the list before deleting.
 - Builder caches keep references to removed elements: regenerate them.
+- Data written to a builder outside its editor is not shown until its generated files are regenerated and caches are cleared.
+- Raw shortcodes appearing as text after a removal.
 
 ## Exit criteria
 Public pages unchanged against the baseline (URLs, statuses, text, media); no residues of removed components in database and files.

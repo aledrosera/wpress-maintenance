@@ -1,6 +1,6 @@
 # wpress-maintenance
 
-A Claude Code plugin that takes an [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migration/) backup (`.wpress`) of any WordPress site, restores it locally in Docker, finds and removes compromises, removes everything the site does not use, optimizes media and performance, verifies that nothing changed unintentionally compared with the live site, and delivers a technical report and — on confirmation — an optimized `.wpress`.
+A Claude Code plugin that takes an [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migration/) backup (`.wpress`) of any WordPress site, restores it locally in Docker, finds and removes compromises, removes everything the site does not use, optimizes media, SEO, accessibility and performance, verifies that nothing changed unintentionally compared with the live site, and delivers a technical report and — on confirmation — an optimized `.wpress`.
 
 It is an adaptive playbook, not a fixed script: every phase defines an objective, the criteria to decide, the risks to check and the exit criteria, and Claude adapts the work to the theme, builder, plugins, server stack and state of the site in front of it.
 
@@ -83,8 +83,10 @@ The flow runs autonomously. It stops only for missing inputs, for a short summar
 | remediation | Malicious items removed, vectors closed |
 | cleanup | Unused plugins, themes, content, data and files removed |
 | media | Only used media, optimized |
+| seo | The SEO Framework as the only SEO plugin, previous SEO data migrated, missing SEO created |
+| accessibility | Audit and fixes: alt texts, contrast, names, headings, forms, language consistency |
 | performance | Measured improvement of response and load |
-| verification | Full real visit, comparison with the live site, integrity checks |
+| verification | Full real visit, comparison with the live site, integrity checks, quality targets |
 | delivery | Report, production checklist, optimized backup, cleanup |
 
 ## License

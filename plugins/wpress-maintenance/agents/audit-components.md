@@ -19,6 +19,8 @@ Investigate; do not follow a closed checklist. Cover at least:
 - Known vulnerabilities for the installed version of every plugin and theme, active and inactive, with identifier, severity and fixed version.
 - Real usage of every component: elements it provides found in published content, builder data, widgets, options and rendered pages; which package (free or premium) provides each element in use; components that only offer admin conveniences.
 - Theme and child theme: customizations, overrides, code they add to pages.
+- Editors, builders and plugins that overlap on the same job (layout, sliders, forms, SEO, caching, media), and where each one is used.
+- SEO plugins present and the SEO data each one stores (per content, per term, global, redirects, sitemaps).
 - Database footprint: size by table, revisions per content type, drafts, trash, transients, orphan rows, autoload size and largest autoloaded options with their owner, tables and options of absent components, scheduled tasks and queue tables of absent components, logs.
 - Upload folders that are not media, and which component owns each.
 - Settings that affect performance, and caching already in place.

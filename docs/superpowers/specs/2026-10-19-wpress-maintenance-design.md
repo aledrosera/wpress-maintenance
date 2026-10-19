@@ -45,7 +45,7 @@ Il plugin è un **playbook adattivo**, non un'automazione a script. Insegna a Cl
 3. **I file temporanei creati dal flusso si cancellano alla fine.** Questo vale anche per gli strumenti installati temporaneamente nei container. Nella cartella di lavoro restano solo gli artefatti consegnati (§6.10).
 4. **Una verifica reale vale più di un'ipotesi**, ma con rapidità e buonsenso. Si verifica alla fine di ogni fase e prima delle azioni distruttive, non a ogni singolo passo.
 5. **Il sito online è il riferimento visivo.** Serve a scoprire cambiamenti di aspetto o di funzionamento non richiesti e non necessari. Si consulta solo in lettura, con poche richieste in parallelo, bloccando le risorse di terze parti nel rendering (il sito potrebbe essere compromesso).
-6. **Si decide in base alle evidenze raccolte sul sito in esame**, non in base a preferenze predefinite. Il playbook non contiene raccomandazioni di prodotti né comandi d'esempio da riprodurre. Se l'utente indica una preferenza, quella prevale.
+6. **Si decide in base alle evidenze raccolte sul sito in esame** (fa eccezione la preferenza del proprietario per The SEO Framework), non in base a preferenze predefinite. Il playbook non contiene raccomandazioni di prodotti né comandi d'esempio da riprodurre. Se l'utente indica una preferenza, quella prevale.
 7. **Gli account esistenti non si modificano.** Per lavorare si crea un amministratore locale dedicato, che va rimosso prima dell'export finale.
 8. **Il report** è nella lingua dell'utente (in mancanza d'altro, quella della conversazione), tecnico, per punti ed essenziale.
 
@@ -110,6 +110,14 @@ Ogni fase ha un obiettivo e un criterio di uscita. Il *come* lo decide Claude su
 - **Ottimizzazione:** si ricomprimono immagini e video senza cambiare nomi e percorsi, scegliendo formati e codec in base alla compatibilità e al guadagno misurato.
 - **Strumenti:** si installano temporaneamente nei container e si rimuovono alla fine.
 - **Uscita:** nessun media mancante nella visita reale; peso ridotto e misurato.
+
+### 6.7b SEO
+- **Obiettivo:** The SEO Framework come unico plugin SEO, per preferenza del proprietario.
+- **Procedura:** migrazione completa dei dati dei plugin SEO precedenti (titoli, descrizioni, canonical, robots, social, redirect, organizzazione, sitemap), verificata confrontando i tag SEO stampati su ogni URL; poi si crea la SEO mancante, nella lingua del sito e senza toccare i termini del brand.
+
+### 6.7c Accessibilità
+- **Obiettivo:** audit automatico più controlli sull'HTML reale.
+- **Cosa si sistema:** alt text sensati scritti nella libreria media, nomi accessibili sui link fatti di sole icone, contrasto, titoli, form, "riduci movimento", coerenza della lingua.
 
 ### 6.8 Prestazioni
 - **Obiettivo:** migliorare tempi di risposta e caricamento.

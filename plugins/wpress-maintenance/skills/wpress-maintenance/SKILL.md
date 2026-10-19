@@ -11,7 +11,7 @@ An adaptive playbook that turns a `.wpress` backup of any WordPress site into a 
 Every decision comes from evidence collected on the site in front of you: its theme, builder, plugins, server stack, content and state. The phase cards give objectives, decision criteria, risks to check and exit criteria — never a fixed recipe.
 
 ## Scope
-- In scope: local restore, security audit and remediation, cleanup, media and performance optimization, verification, report, optimized backup.
+- In scope: local restore, security audit and remediation, cleanup, media, SEO, accessibility and performance optimization, verification, report, optimized backup.
 - Out of scope: deploying to production; any write to the live site, its server or external services; redesign or content changes not required by remediation, cleanup or optimization.
 
 ## Operating principles
@@ -23,6 +23,8 @@ Every decision comes from evidence collected on the site in front of you: its th
 6. Choices follow the evidence on this site and the user's stated preferences.
 7. Existing accounts stay untouched; work through a dedicated local administrator, removed before the final export.
 8. The report is written in the user's language, technical, in bullet points, essentials only.
+9. What you announce, you do now — or you say clearly who has to do it.
+10. Owner preference: the site ends with The SEO Framework as its only SEO plugin, with the data of any previous SEO plugin migrated (see the seo card).
 
 ## Phases
 Load a phase card only when that phase starts. Each card lists Objective, Determine, Decide, Risks to check, Exit criteria, Report.
@@ -37,9 +39,11 @@ Load a phase card only when that phase starts. Each card lists Objective, Determ
 | remediation | references/05-remediation.md | malicious items removed, vectors closed | no critical/high finding open locally |
 | cleanup | references/06-cleanup.md | unused components, content, data, files removed | no residues, public pages unchanged |
 | media | references/07-media.md | only used media, optimized | zero missing media in a real visit |
-| performance | references/08-performance.md | measured speed improvement | improvement measured, no regressions |
-| verification | references/09-verification.md | full real visit, live comparison, integrity | all checks pass or exceptions explained |
-| delivery | references/10-delivery.md | report, checklist, backup, cleanup | deliverables in place, temp removed |
+| seo | references/08-seo.md | one SEO plugin with migrated and completed SEO | rendered SEO tags as baseline or improved, valid sitemap |
+| accessibility | references/09-accessibility.md | pages usable by everyone | audit target reached, meaningful alt texts |
+| performance | references/10-performance.md | measured speed improvement | improvement measured, no regressions |
+| verification | references/11-verification.md | full real visit, live comparison, integrity, targets | all checks pass or exceptions explained |
+| delivery | references/12-delivery.md | report, checklist, backup, cleanup | deliverables in place, temp removed |
 
 ## When to stop and ask
 The flow runs autonomously. It pauses only in these four cases:
