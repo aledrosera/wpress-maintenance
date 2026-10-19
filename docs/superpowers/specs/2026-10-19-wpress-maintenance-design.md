@@ -25,7 +25,7 @@ Il plugin è un **playbook adattivo**, non un'automazione a script. Insegna a Cl
 
 ## 4. Input e preflight
 1. **Backup.** Si cerca il `.wpress` nella cartella di lavoro. Se manca, si chiede all'utente un URL raggiungibile e lo si scarica in autonomia nella cartella di lavoro. Il download deve poter riprendere se si interrompe, e alla fine si verifica che il file sia un `.wpress` valido. Se ci sono più `.wpress`, si chiede quale usare.
-2. **Unlimited Extension.** Si cerca lo zip dell'add-on nella cartella di lavoro. Se manca, si chiede all'utente di fornirlo o di indicare dove si trova.
+2. **Unlimited Extension.** Si cerca lo zip dell'add-on nella cartella di lavoro. Se manca, lo si scarica dall'URL predefinito del plugin, definito in un solo punto e sovrascrivibile con la variabile d'ambiente `WPRESS_AIOWM_UNLIMITED_URL`. Se il download non riesce, si chiede all'utente di fornire lo zip o di indicare dove si trova.
 3. **Lettura dei metadati in streaming.** Da `package.json` dentro l'archivio si ricavano:
    - URL del sito;
    - versioni di WordPress, PHP e database;
@@ -221,5 +221,5 @@ docs/superpowers/specs/              questo documento
 - **Playbook adattivo invece di script.** La varietà dei siti WordPress rende fragili gli automatismi; gli script restano solo dove il formato è fisso.
 - **Niente comandi d'esempio né prodotti consigliati nel playbook**, per non orientare le scelte.
 - **Autonomia completa**, con gli stop del §7.
-- **Import automatico tramite l'Unlimited Extension fornita dall'utente**, con l'archivio montato in sola lettura.
+- **Import automatico tramite l'Unlimited Extension**, con l'archivio montato in sola lettura. Lo zip è fornito nella cartella di lavoro oppure scaricato dall'URL predefinito per uso interno. L'URL predefinito è pubblico finché il repository è pubblico: è una scelta del proprietario, e la sicurezza del link la gestisce lui.
 - **Repository pubblico unico**, che fa sia da marketplace sia da plugin; licenza MIT.
