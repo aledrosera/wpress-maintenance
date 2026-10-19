@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "wpress-maintenance",
+  "description": "Clean, secure, optimize and verify a WordPress site from an All-in-One WP Migration (.wpress) backup.",
+  "owner": {
+    "name": "Alessandro Drosera",
+    "url": "https://github.com/aledrosera"
+  },
+  "plugins": [
+    {
+      "name": "wpress-maintenance",
+      "description": "Adaptive playbook: local restore of a .wpress, security audit and remediation, cleanup, media and performance optimization, verification against the live site, report and optimized backup.",
+      "source": "./plugins/wpress-maintenance",
+      "category": "productivity"
+    }
+  ]
+}

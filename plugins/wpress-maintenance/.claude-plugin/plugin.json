@@ -1,0 +1,13 @@
+{
+  "name": "wpress-maintenance",
+  "version": "0.1.0",
+  "description": "Adaptive playbook to restore a WordPress .wpress backup locally, remediate compromises, clean, optimize, verify against the live site and deliver a report and an optimized backup.",
+  "author": {
+    "name": "Alessandro Drosera",
+    "url": "https://github.com/aledrosera"
+  },
+  "homepage": "https://github.com/aledrosera/wpress-maintenance",
+  "repository": "https://github.com/aledrosera/wpress-maintenance",
+  "license": "MIT",
+  "keywords": ["wordpress", "wpress", "all-in-one-wp-migration", "security", "malware", "cleanup", "performance", "media"]
+}
